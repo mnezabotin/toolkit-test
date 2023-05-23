@@ -1,0 +1,22 @@
+.header {
+  display: flex;
+  align-items: center;
+  padding: 1rem 2rem;
+  z-index: 100;
+  position: sticky;
+  top: 0;
+  background: #fff;
+  font-weight: 900;
+  font-size: 1.2rem;
+}
+
+.header img {
+  width: 1.8rem;
+  margin-right: 0.5rem;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.header input {
+  margin-left: auto;
+}
