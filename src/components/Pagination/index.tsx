@@ -42,19 +42,19 @@ export default ({
   }
 
   const onPrev = () => {
-    if (page > 1){
+    if (page > 1 && !loading) {
       onChange(false)
     }
   }
 
   const onNext = () => {
-    if (page < max){
+    if (page < max && !loading) {
       onChange(true)
     }
   }
 
   return (
-    <div className={styles.paginator}>
+    <div className={styles.pagination}>
       <button className={loading ? styles.loading : ''} onClick={onPrev}>&#10094;</button>
       {pages}
       <button className={loading ? styles.loading : ''} onClick={onNext}>&#10095;</button>

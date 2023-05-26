@@ -1,4 +1,4 @@
-.paginator {
+.pagination {
   display: flex;
   align-items: center;
   margin: 5rem auto 0;
@@ -8,7 +8,7 @@
   gap: 8px;
 }
 
-.paginator button {
+.pagination button {
   padding: 0;
   display: flex;
   align-items: center;
@@ -20,27 +20,27 @@
   cursor: default;
 }
 
-.paginator button:hover {
+.pagination button:hover {
   border-color: transparent;
 }
 
-.paginator button:first-child,
-.paginator button:last-child {
+.pagination button:first-child,
+.pagination button:last-child {
   cursor: pointer;
 }
 
-.paginator button:first-child:hover,
-.paginator button:last-child:hover {
+.pagination button:first-child:hover,
+.pagination button:last-child:hover {
   border-color: #eceff5;
   background-color: #eceff5;
 }
 
-.paginator button.active {
+.pagination button.active {
   background-color: #5a8dee;
   color: #fff;
 }
 
-.paginator button.loading {
-  pointer-events: none;
+.pagination button.loading {
   opacity: 0.8;
+  cursor: no-drop;
 }

@@ -77,6 +77,7 @@ export default (): JSX.Element => {
   }
 
   const onSearch = (value: string) => {
+    isNext.current = 0
     onSearchParams(value, 1, '', '')
   }
 
