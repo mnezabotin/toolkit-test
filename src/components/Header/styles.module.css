@@ -20,3 +20,9 @@
 .header input {
   margin-left: auto;
 }
+
+@media (max-width: 764px) {
+  .header span {
+    display: none;
+  }
+}

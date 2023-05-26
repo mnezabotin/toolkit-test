@@ -16,7 +16,7 @@
   background-color: #5a8dee0f;
 }
 
-.grid > div.loading > div:before {
+.grid > div.loading > div:after {
   content: '';
   display: block;
   height: 20px;
@@ -31,11 +31,11 @@
   background-color: transparent;
 }
 
-.grid > div.loading > div:last-child:before {
+.grid > div.loading > div:last-child:after {
   width: 100%;
 }
 
-.grid > div.loading > div:nth-child(3):before {
+.grid > div.loading > div:nth-child(3):after {
   margin-left: auto;
   margin-right: auto;
 }
@@ -77,4 +77,60 @@
   content: '★';
   color: #fece00;
   margin-right: 8px;
+}
+
+@media (max-width: 764px) {
+  .grid > div:first-child {
+    display: none;
+  }
+
+  .grid > div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem;
+    border-radius: 0;
+  }
+
+  .grid > div > div:nth-child(2) {
+    margin-right: auto;
+  }
+
+  .grid > div > div:nth-child(3) {
+    display: flex;
+    gap: 2px;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .grid > div > div:nth-child(3):before {
+    content: '';
+    display: inline-block;
+    width: 0.8rem;
+    height: 0.8rem;
+    background-image: url(../../assets/git.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  .grid > div {
+    border-bottom: 1px solid #f1f1f1;
+  }
+
+  .grid > div:last-child {
+    border-bottom: none;
+  }
+
+  .grid > div > div:first-child {
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .grid > div.loading > div {
+    min-width: 4rem;
+  }
+
+  .grid > div.loading > div:nth-child(3):before {
+    display: none;
+  }
 }

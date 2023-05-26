@@ -30,7 +30,15 @@ a:hover {
 
 body {
   margin: 0;
+  font-size: 100%;
 }
+
+@media (max-width: 764px) {
+  body {
+    font-size: calc(1rem + .007*(100vw - 764px));
+  }
+}
+
 
 h1 {
   font-size: 3.2em;

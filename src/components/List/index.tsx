@@ -11,11 +11,13 @@ type Repo = {
 }
 
 type Props = {
+  perPage: number;
   loading: boolean;
   items: Repo[];
 }
 
 export default({
+  perPage,
   items,
   loading,
 }: Props): JSX.Element => {
@@ -27,7 +29,7 @@ export default({
         <div>Дата последнего коммита</div>
       </div>
       {loading ? (
-        <Loading count={10} />
+        <Loading count={perPage} />
       ) : items.map(r => (
         <div>
           <div>
