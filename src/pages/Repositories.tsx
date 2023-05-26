@@ -101,7 +101,8 @@ export default (): JSX.Element => {
         prevstart,
         prevend,
       })
-      setTotal(data?.search?.repositoryCount ?? 0)
+      const total = query ? (data?.search?.repositoryCount ?? 0) : (data?.viewer?.repositories?.totalCount ?? 0)
+      setTotal(total)
     }
   }, [data])
 

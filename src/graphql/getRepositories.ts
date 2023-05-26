@@ -14,8 +14,6 @@ export const GET_REPOSITORIES = gql`
       pageInfo {
         startCursor
         endCursor
-        hasNextPage
-        hasPreviousPage
       }
       nodes {
         ... on Repository {

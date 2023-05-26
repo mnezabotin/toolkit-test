@@ -41,6 +41,5 @@
 }
 
 .pagination button.loading {
-  opacity: 0.8;
   cursor: no-drop;
 }
