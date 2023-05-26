@@ -30,7 +30,6 @@ a:hover {
 
 body {
   margin: 0;
-  background-image: url(./assets/github-contribution-grid-snake.svg);
 }
 
 h1 {
@@ -73,4 +72,26 @@ input:focus-visible {
 ::selection {
   background: #4270c9;
   color: #fff;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.login-link {
+  display: flex;
+  flex-direction: column;
+  width: 136px;
+  gap: 16px;
+  font-size: 1.8rem;
+  margin: 30vh auto;
+  text-align: center;
+  font-weight: 300;
+  text-decoration: none;
+}
+
+.login-link:hover {
+  filter: drop-shadow(0 0 4rem #646cffaa);
 }

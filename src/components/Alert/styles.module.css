@@ -1,0 +1,26 @@
+.alert {
+  margin: 1rem 0;
+  padding: 0.7rem 2rem;
+  background-color: #eceff5;
+  border-radius: 1rem;
+}
+
+.success {
+  background-color: #f0f9eb;
+  color: #67c23a;
+}
+
+.info {
+  background-color: #f4f4f5;
+  color: #909399;
+}
+
+.warning {
+  background-color: #fdf6ec;
+  color: #e6a23c;
+}
+
+.error {
+  background-color: #fef0f0;
+  color: #f56c6c;
+}

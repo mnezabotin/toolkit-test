@@ -4,13 +4,15 @@ type Props = {
   page: number;
   per: number;
   total: number;
-  onChange: (page: number) => void;
+  loading: boolean;
+  onChange: (next: boolean) => void;
 }
 
 export default ({
   page,
   per,
   total,
+  loading,
   onChange,
 }: Props): JSX.Element => {
   let max = Math.ceil(total / per)
@@ -33,7 +35,6 @@ export default ({
       <button
         key={`pag_${num}`}
         className={num === page ? styles.active : ''}
-        onClick={() => onChange(num)}
       >
         {num}
       </button>,
@@ -41,22 +42,22 @@ export default ({
   }
 
   const onPrev = () => {
-    if(page>1){
-      onChange(page-1)
+    if (page > 1){
+      onChange(false)
     }
   }
 
   const onNext = () => {
-    if(page<max){
-      onChange(page + 1)
+    if (page < max){
+      onChange(true)
     }
   }
 
   return (
     <div className={styles.paginator}>
-      <button onClick={onPrev}>&#10094;</button>
+      <button className={loading ? styles.loading : ''} onClick={onPrev}>&#10094;</button>
       {pages}
-      <button onClick={onNext}>&#10095;</button>
+      <button className={loading ? styles.loading : ''} onClick={onNext}>&#10095;</button>
     </div>
   );
 }

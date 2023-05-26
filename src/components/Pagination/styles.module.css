@@ -4,7 +4,7 @@
   margin: 5rem auto 0;
   width: fit-content;
   position: sticky;
-  bottom: 1rem;
+  bottom: 2rem;
   gap: 8px;
 }
 
@@ -17,9 +17,20 @@
   height: 32px;
   background-color: transparent;
   color: #5a8dee;
+  cursor: default;
 }
 
 .paginator button:hover {
+  border-color: transparent;
+}
+
+.paginator button:first-child,
+.paginator button:last-child {
+  cursor: pointer;
+}
+
+.paginator button:first-child:hover,
+.paginator button:last-child:hover {
   border-color: #eceff5;
   background-color: #eceff5;
 }
@@ -27,4 +38,9 @@
 .paginator button.active {
   background-color: #5a8dee;
   color: #fff;
+}
+
+.paginator button.loading {
+  pointer-events: none;
+  opacity: 0.8;
 }

@@ -1,14 +1,24 @@
-import { Link } from 'react-router-dom';
-import styles from './styles.module.css';
+import { Link } from 'react-router-dom'
+import Loading from './Loading';
+import styles from './styles.module.css'
 
-const repos = new Array(10).fill(0).map((_, i) => ({
-  name: `Название ${i}`,
-  raiting: i,
-  date: new Date(),
-}))
+type Repo = {
+  id: string;
+  name: string;
+  stargazerCount: number;
+  updatedAt: string;
+  url: string;
+}
 
+type Props = {
+  loading: boolean;
+  items: Repo[];
+}
 
-export default function List(): JSX.Element {
+export default({
+  items,
+  loading,
+}: Props): JSX.Element => {
   return (
     <div className={styles.grid}>
       <div>
@@ -16,18 +26,20 @@ export default function List(): JSX.Element {
         <div>Кол-во звёзд </div>
         <div>Дата последнего коммита</div>
       </div>
-      {repos.map(r => (
+      {loading ? (
+        <Loading count={10} />
+      ) : items.map(r => (
         <div>
           <div>
-            <Link to='34'>
+            <Link to={r.id}>
               {r.name}
             </Link>
           </div>
-          <div className={styles.star}>{r.raiting}</div>
-          <div>{r.date.toDateString()}</div>
+          <div className={styles.star}>{r.stargazerCount?.toLocaleString() ?? 0}</div>
+          <div>{r.updatedAt ? new Date(r.updatedAt).toLocaleDateString() : ''}</div>
           <div>
             <a
-              href='https://github.com/logos'
+              href={r.url}
               target='_blank'
             >
               открыть на Github
@@ -35,6 +47,9 @@ export default function List(): JSX.Element {
           </div>
         </div>
       ))}
+      {!loading && !items.length && (
+        <div className={styles['no-data']}>Репозитории не найдены</div>
+      )}
     </div>
   )
 }

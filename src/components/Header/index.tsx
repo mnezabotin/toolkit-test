@@ -1,12 +1,26 @@
-import styles from './styles.module.css';
-import github from '../../assets/github-mark.svg';
+import Search from '../Search'
+import styles from './styles.module.css'
+import github from '../../assets/github-mark.svg'
 
-export default function Header(): JSX.Element {
+type Pros = {
+  searchValue?: string;
+  onSearch?: (value: string) => void;
+}
+
+export default ({
+  searchValue,
+  onSearch,
+}: Pros): JSX.Element => {
   return (
     <header className={styles.header}>
       <img src={github} />
       <span>Github Repos</span>
-      <input placeholder='Поиск' />
+      {onSearch && (
+        <Search
+          initValue={searchValue}
+          onSearch={onSearch}
+        />
+      )}
     </header>
   )
 }
