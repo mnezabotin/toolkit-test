@@ -1,0 +1,60 @@
+.repository {
+  padding: 1rem 2rem;
+  border-top: 1px solid #f1f1f1;
+}
+
+.owner {
+  display: flex;
+  align-items: center;
+  font-size: 1.25rem;
+}
+
+.owner img {
+  width: 2rem;
+  height: 2rem;
+  object-fit: contain;
+  margin-right: 0.8rem;
+  border-radius: 0.4rem;
+}
+
+.star,
+.date {
+  display: flex;
+  align-items: center;
+}
+
+.star:before {
+  content: '★';
+  color: #fece00;
+  display: inline-block;
+  width: 1.2rem;
+  margin-right: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.date:before {
+  content: '';
+  display: inline-block;
+  width: 1.2rem;
+  height: 1rem;
+  margin-right: 0.5rem;
+  background-image: url(../../assets/git.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.langs {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.langs span {
+  display: inline-block;
+  background-color: #5a8dee0f;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.75rem;
+  color: #5a8dee;
+  border-radius: 0.8rem;
+  font-weight: bold;
+}

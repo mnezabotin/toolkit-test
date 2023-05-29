@@ -11,7 +11,7 @@ import Pagination from '../components/Pagination'
 export default (): JSX.Element => {
   const [total, setTotal] = useState(0)
   const isNext = useRef(0)
-  const first = 20;
+  const first = 10;
 
   let [searchParams, setSearchParams] = useSearchParams()
 

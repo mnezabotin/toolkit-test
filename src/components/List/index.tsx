@@ -31,14 +31,14 @@ export default({
       {loading ? (
         <Loading count={perPage} />
       ) : items.map(r => (
-        <div>
+        <div key={r.id}>
           <div>
             <Link to={r.id}>
               {r.name}
             </Link>
           </div>
           <div className={styles.star}>{r.stargazerCount?.toLocaleString() ?? 0}</div>
-          <div>{r.updatedAt ? new Date(r.updatedAt).toLocaleDateString() : ''}</div>
+          <div>{r.updatedAt ? new Date(r.updatedAt).toLocaleDateString() : '-'}</div>
           <div>
             <a
               href={r.url}

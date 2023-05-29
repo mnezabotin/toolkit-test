@@ -1,6 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom'
 import Home from './pages/Home'
 import Repositories from './pages/Repositories'
+import Repository from './pages/Repository'
 
 export default createBrowserRouter([
   {
@@ -10,5 +11,9 @@ export default createBrowserRouter([
   {
     path: '/repositories',
     element: <Repositories />,
+  },
+  {
+    path: '/repositories/:id',
+    element: <Repository />,
   },
 ])
