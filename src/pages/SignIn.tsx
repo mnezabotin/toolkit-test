@@ -6,7 +6,7 @@ import github from '../assets/github-mark.svg';
 export default (): JSX.Element => {
   const clientId = 'Iv1.436c253b7a63f6f4'
   const clientSecret = '71f3cc6d63ba97fad9c2b195a321c5762ede1a9d'
-  const redirectUri = `${window.location.origin}/sign-in`
+  const redirectUri = `${window.location.origin}/toolkit-test/sign-in`
 
   const [error, setError] = useState();
   const didMountRef = useRef(false);
