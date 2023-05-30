@@ -8,6 +8,23 @@ import List from '../components/List'
 import Alert from '../components/Alert'
 import Pagination from '../components/Pagination'
 
+type Variables = {
+  query?: string;
+  after?: string;
+  before?: string;
+  first?: number;
+  last?: number;
+}
+
+type Params = {
+  query?: string
+  page?: string
+  start?: string
+  end?: string
+  prevstart?: string
+  prevend?: string
+}
+
 export default (): JSX.Element => {
   const [total, setTotal] = useState(0)
   const isNext = useRef(0)
@@ -26,21 +43,21 @@ export default (): JSX.Element => {
   }, [searchParams])
 
   const variables = useMemo((): any => {
-    if (!query) {
-      return {}
-    }
     const start = searchParams.get('start')
     const end = searchParams.get('end')
     const prevstart = searchParams.get('prevstart')
     const prevend = searchParams.get('prevend')
 
-    const v = { query }
+    const v = { } as Variables
+    if (query) {
+      v.query = query
+    }
     if (start && isNext.current > 0) {
-      v.after = end
+      v.after = end ?? ''
       v.first = first
     }
     if (end && isNext.current < 0) {
-      v.before = start
+      v.before = start ?? ''
       v.last = first
     }
     if (isNext.current === 0) {
@@ -66,7 +83,7 @@ export default (): JSX.Element => {
   const onSearchParams = (q: string, p: number, start: string, end: string ) => {
     const page = p.toString()
     const query = q
-    const params = {query, page, start, end}
+    const params = { query, page, start, end } as Params
     if (isNext.current > 0) {
       params.prevend = end
     }
