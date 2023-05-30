@@ -19,7 +19,7 @@ export default createBrowserRouter(
     },
     {
       path: '*',
-      element: <Navigate to='/repositories' replace />
+      element: <Navigate to='/sign-in' replace />
     }
   ],
   {
