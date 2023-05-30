@@ -8,7 +8,7 @@ import Alert from '../components/Alert'
 export default (): JSX.Element =>  {
   const { id } = useParams();
   const { loading, error, data } = useQuery(GET_REPOSITORY, {variables: { id }});
-  const langs = data?.node?.languages?.edges?.map(l => l.node.name) ?? []
+  const langs = data?.node?.languages?.edges?.map((l: {node: {name: string}}) => l.node.name) ?? []
 
   return (
     <>
