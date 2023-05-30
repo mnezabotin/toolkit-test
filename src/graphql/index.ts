@@ -1,7 +1,7 @@
 import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client'
 import { setContext } from '@apollo/client/link/context'
 
-const personalAccessToken = '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'
+const personalAccessToken = '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'
 const uri = 'https://api.github.com/graphql'
 
 const httpLink = createHttpLink({
