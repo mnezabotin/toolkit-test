@@ -15,6 +15,7 @@ type Props = {
   langs: string[];
   desc: string;
   owner: Owner;
+  loading: boolean;
 }
 
 export default ({
@@ -25,8 +26,9 @@ export default ({
   langs,
   desc,
   owner,
+  loading,
 }: Props): JSX.Element => (
-  <div className={styles.repository}>
+  <div className={`${styles.repository} ${loading ? styles.loading : ''}`}>
     <div className={styles.owner}>
       <Back />
       {owner.avatarUrl && <img src={owner.avatarUrl} />}
@@ -45,11 +47,11 @@ export default ({
         {name}
       </a>
     </h2>
-    <h5 className={styles.star}>{stargazerCount.toLocaleString()}</h5>
-    <h5 className={styles.date}>{updatedAt ? new Date(updatedAt).toLocaleDateString() : '-'}</h5>
+    <h5 className={styles.star}>{!loading && stargazerCount.toLocaleString()}</h5>
+    <h5 className={styles.date}>{!loading && updatedAt ? new Date(updatedAt).toLocaleDateString() : ''}</h5>
     <p className={styles.langs}>
       {langs.map(l => (
-        <span>{l}</span>
+        <span key={l}>{l}</span>
       ))}
     </p>
     <p>{desc}</p>

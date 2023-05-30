@@ -58,3 +58,48 @@
   border-radius: 0.8rem;
   font-weight: bold;
 }
+
+.repository.loading .owner:after,
+.repository.loading h2:after,
+.repository.loading h5:after,
+.repository.loading p:before,
+.repository.loading p:after {
+  content: '';
+  display: block;
+  height: 20px;
+  background-color: #eceff5;
+  border-radius: 8px;
+}
+
+.repository.loading .owner:after {
+  height: 20px;
+  width: 20%;
+}
+
+.repository.loading h2:after {
+  height: 22px;
+  width: 25%;
+}
+
+.repository.loading h5:after {
+  height: 18px;
+  width: 8%;
+}
+
+.repository.loading h5:before {
+  display: none;
+}
+
+.repository.loading p:after,
+.repository.loading p:before {
+  height: 14px;
+  width: 16%;
+  margin-bottom: 1rem;
+}
+
+.repository.loading p.langs:after,
+.repository.loading p.langs:before {
+  width: 5rem;
+  height: 30px;
+  border-radius: 0.8rem;
+}

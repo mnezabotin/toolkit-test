@@ -1,13 +1,13 @@
-import { createBrowserRouter } from 'react-router-dom'
-import Home from './pages/Home'
+import { createBrowserRouter, Navigate } from 'react-router-dom'
+// import SignIn from './pages/SignIn'
 import Repositories from './pages/Repositories'
 import Repository from './pages/Repository'
 
 export default createBrowserRouter([
-  {
-    path: '/',
-    element: <Home />,
-  },
+  // {
+  //   path: '/sign-in',
+  //   element: <SignIn />,
+  // },
   {
     path: '/repositories',
     element: <Repositories />,
@@ -16,4 +16,8 @@ export default createBrowserRouter([
     path: '/repositories/:id',
     element: <Repository />,
   },
+  {
+    path: '*',
+    element: <Navigate to='/repositories' replace />
+  }
 ])

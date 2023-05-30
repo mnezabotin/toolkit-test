@@ -13,15 +13,16 @@ export default (): JSX.Element =>  {
   return (
     <>
       <Header />
-      {data && <Card
-        name={data.node.name}
-        url={data.node.url}
-        stargazerCount={data.node.stargazerCount}
-        updatedAt={data.node.updatedAt}
+      <Card
+        name={data?.node?.name}
+        url={data?.node?.url}
+        stargazerCount={data?.node?.stargazerCount}
+        updatedAt={data?.node?.updatedAt}
         langs={langs}
-        desc={data.node.description}
-        owner={data.node.owner}
-      />}
+        desc={data?.node?.description}
+        owner={data?.node?.owner ?? {}}
+        loading={loading}
+      />
       {error && <Alert type='error' msg={error.message} />}
     </>
   )

@@ -13,19 +13,19 @@ export default (): JSX.Element => {
   const isNext = useRef(0)
   const first = 10;
 
-  let [searchParams, setSearchParams] = useSearchParams()
+  const [searchParams, setSearchParams] = useSearchParams()
 
-  let page = useMemo((): number => {
+  const page = useMemo((): number => {
     const page = searchParams.get('page')
     return page ? +page : 1;
   }, [searchParams])
 
-  let query = useMemo((): string => {
+  const query = useMemo((): string => {
     const query = searchParams.get('query')
     return query ?? '';
   }, [searchParams])
 
-  let variables = useMemo((): any => {
+  const variables = useMemo((): any => {
     if (!query) {
       return {}
     }
