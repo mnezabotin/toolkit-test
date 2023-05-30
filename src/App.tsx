@@ -7,6 +7,7 @@ export default (): JSX.Element => (
   <>
     <HashRouter>
       <Routes>
+        <Route path="/" element={<SignIn />} />
         <Route path="/sign-in" element={<SignIn />} />
         <Route path="/repositories" element={<Repositories />} />
         <Route path="/repositories/:id" element={<Repository />} />
