@@ -1,12 +1,16 @@
 import { useMemo, useEffect, useRef, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { useQuery } from '@apollo/client'
+// import { useQuery } from '@apollo/client'
 import { GET_REPOSITORIES } from '../graphql/getRepositories'
 import { GET_OWNER_REPOSITORIES } from '../graphql/getOwnerRepositories'
 import Header from '../components/Header'
 import List from '../components/List'
 import Alert from '../components/Alert'
 import Pagination from '../components/Pagination'
+// import apolloClient from '../graphql'
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { getRepositoriesRequest } from '../redux/actions/repositoriesAction'
 
 type Variables = {
   query?: string;
@@ -25,7 +29,16 @@ type Params = {
   prevend?: string
 }
 
-export default (): JSX.Element => {
+const Repositories = ({
+  // @ts-ignore
+  data,
+  // @ts-ignore
+  loading,
+  // @ts-ignore
+  error,
+  // @ts-ignore
+  getRepositories
+}): JSX.Element => {
   const [total, setTotal] = useState(0)
   const isNext = useRef(0)
   const first = 10;
@@ -76,9 +89,16 @@ export default (): JSX.Element => {
     return v
   }, [page, query])
 
-  const { loading, error, data } = useQuery(query ? GET_REPOSITORIES : GET_OWNER_REPOSITORIES, {
-    variables
-  });
+  useEffect(() => {
+    getRepositories({
+      variables,
+      query: query ? GET_REPOSITORIES : GET_OWNER_REPOSITORIES
+    })
+  }, [variables, query])
+
+  // const { loading, error, data } = useQuery(query ? GET_REPOSITORIES : GET_OWNER_REPOSITORIES, {
+  //   variables
+  // });
 
   const onSearchParams = (q: string, p: number, start: string, end: string ) => {
     const page = p.toString()
@@ -147,3 +167,26 @@ export default (): JSX.Element => {
     </>
   )
 }
+// @ts-ignore
+const mapDispatchToProps = (dispatch, props) => {
+	return {
+    // @ts-ignore
+		getRepositories: payload => {
+			dispatch(getRepositoriesRequest(payload));
+		}
+	};
+};
+// @ts-ignore
+const mapStateToProps = state => {
+	return {
+		data: state.repositoriesReducer.data,
+		loading: state.repositoriesReducer.loading,
+		error: state.repositoriesReducer.error,
+	};
+};
+
+Repositories.propTypes = {
+	dispatch: PropTypes.func
+};
+// @ts-ignore
+export default connect(mapStateToProps, mapDispatchToProps)(Repositories);
